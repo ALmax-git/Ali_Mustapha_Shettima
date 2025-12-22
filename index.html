@@ -1,501 +1,1103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ali Mustapha Shettima :: ALmax</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Ali Mustapha Shettima</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords" value="Ali Mustapha Shettima">
+    <style>
+      body {
+        box-sizing: border-box;
+      }
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap");
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+      * {
+        box-sizing: border-box;
+      }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+      :root {
+        --bg-primary: #000000;
+        --bg-secondary: #0a0a0a;
+        --neon-green: #00ff41;
+        --neon-cyan: #00ffff;
+        --neon-pink: #ff006e;
+        --text-primary: #e0e0e0;
+        --text-muted: #6b7280;
+      }
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        overflow-x: hidden;
+      }
 
-</head>
+      .font-display {
+        font-family: "Orbitron", sans-serif;
+      }
 
-<body class="index-page">
+      /* Enhanced Matrix Background */
+      #matrix-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.12;
+      }
 
-  <header id="header" class="header d-flex flex-column justify-content-center">
+      /* Animated grid overlay */
+      .cyber-grid {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        background-image: linear-gradient(
+            rgba(0, 255, 65, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        animation: gridScroll 20s linear infinite;
+      }
 
-    <i class="header-toggle d-xl-none bi bi-list"></i>
+      @keyframes gridScroll {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(50px);
+        }
+      }
 
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
-      </ul>
-    </nav>
+      /* Scanlines */
+      .scanlines {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+        background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.1),
+          rgba(0, 0, 0, 0.1) 1px,
+          transparent 1px,
+          transparent 2px
+        );
+        animation: scanlineMove 8s linear infinite;
+      }
 
-  </header>
+      @keyframes scanlineMove {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(100%);
+        }
+      }
 
-  <main class="main">
+      /* Vignette effect */
+      .vignette {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+        box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.9);
+      }
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section light-background">
+      /* Enhanced glow effects */
+      .glow-green {
+        color: var(--neon-green);
+        text-shadow: 0 0 2px var(--neon-green), 0 0 2px var(--neon-green),
+          0 0 2px var(--neon-green), 0 0 2px rgba(0, 255, 64, 0.38);
+      }
 
-      <img src="assets/img/hero-bg.jpg" alt="">
+      .glow-cyan {
+        color: var(--neon-cyan);
+        text-shadow: 0 0 1px var(--neon-cyan), 0 0 1px var(--neon-cyan),
+          0 0 2px var(--neon-cyan), 0 0 1px rgba(0, 255, 255, 0.28);
+      }
 
-      <div class="container" data-aos="zoom-out">
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
-            <h2>Ali Mustapha Shettima</h2>
-            <p>I'm <span class="typed" data-typed-items="ALmax, Web Developer, Ethical Hacker, Designer, Developer, System Administrator, Database Administrator, Networker">ALmax</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
-            <div class="social-links">
-              <a href="https://x.com/AliMustaphaShe3"><i class="bi bi-twitter-x"></i></a>
-              <a href="https://web.facebook.com/profile.php?id=100084549103453"><i class="bi bi-facebook"></i></a>
-              <a href="https://www.instagram.com/almax247/"><i class="bi bi-instagram"></i></a>
-              <a href="https://ng.linkedin.com/in/almax247"><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
+      .glow-pink {
+        color: var(--neon-pink);
+        text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink),
+          0 0 10px var(--neon-pink);
+      }
 
-    </section><!-- /Hero Section -->
+      /* Border glow animations */
+      .border-glow-animated {
+        position: relative;
+        border: 1px solid var(--neon-green);
+        box-shadow: 0 0 5px var(--neon-green),
+          inset 0 0 5px rgba(0, 255, 65, 0.1);
+        transition: all 0.3s ease;
+      }
 
-    <!-- About Section -->
-    <section id="about" class="about section">
+      .border-glow-animated:hover {
+        border-color: var(--neon-cyan);
+        box-shadow: 0 0 15px var(--neon-cyan),
+          inset 0 0 15px rgba(0, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p>Enthusiastic learner and adopter of emerging technologies, continually advancing skills in Linux and Ethical Hacking</p>
-      </div><!-- End Section Title -->
+      .border-glow-cyan-animated {
+        border: 1px solid var(--neon-cyan);
+        box-shadow: 0 0 5px var(--neon-cyan),
+          inset 0 0 5px rgba(0, 255, 255, 0.1);
+      }
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      /* Holographic card effect */
+      .holo-card {
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 255, 65, 0.05) 0%,
+          rgba(0, 255, 255, 0.05) 100%
+        );
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 255, 65, 0.3);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 content">
-            <h2>Web Developer &amp; <span  class="text-warning">Ethical Hacker.</span></h2>
-            <p class="fst-italic py-3">
-              Dynamic and accomplished IT professional with a proven track record in diverse technical domains including
-              System Administration, web development, database management, cybersecurity and more. Eager to leverage extensive
-              expertise and innovation to drive technological excellence and transformative solutions at a leading
-              organization.
+      .holo-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(0, 255, 255, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .holo-card:hover::before {
+        left: 100%;
+      }
+
+      .holo-card:hover {
+        border-color: var(--neon-cyan);
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.3),
+          inset 0 0 10px rgba(0, 255, 255, 0.1);
+        transform: translateY(-5px) scale(1.02);
+      }
+
+      /* Typing cursor */
+      .typing-cursor {
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        49% {
+          opacity: 1;
+        }
+        50%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* Enhanced glitch effect */
+      .glitch {
+        position: relative;
+        display: inline-block;
+      }
+
+      .glitch:hover {
+        animation: glitch-skew 0.3s infinite;
+      }
+
+      .glitch:hover::before,
+      .glitch:hover::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .glitch:hover::before {
+        animation: glitch-anim-1 0.3s infinite;
+        color: var(--neon-cyan);
+        text-shadow: 2px 0 var(--neon-cyan);
+        clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+      }
+
+      .glitch:hover::after {
+        animation: glitch-anim-2 0.3s infinite;
+        color: var(--neon-pink);
+        text-shadow: -2px 0 var(--neon-pink);
+        clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+      }
+
+      @keyframes glitch-anim-1 {
+        0% {
+          clip-path: polygon(0 0%, 100% 0%, 100% 5%, 0 5%);
+          transform: translate(-2px, -2px);
+        }
+        10% {
+          clip-path: polygon(0 15%, 100% 15%, 100% 20%, 0 20%);
+          transform: translate(2px, 0);
+        }
+        20% {
+          clip-path: polygon(0 40%, 100% 40%, 100% 50%, 0 50%);
+          transform: translate(-2px, 2px);
+        }
+        30% {
+          clip-path: polygon(0 65%, 100% 65%, 100% 75%, 0 75%);
+          transform: translate(2px, -2px);
+        }
+        40% {
+          clip-path: polygon(0 80%, 100% 80%, 100% 85%, 0 85%);
+          transform: translate(-2px, 0);
+        }
+        50% {
+          clip-path: polygon(0 30%, 100% 30%, 100% 35%, 0 35%);
+          transform: translate(2px, 2px);
+        }
+        60% {
+          clip-path: polygon(0 10%, 100% 10%, 100% 15%, 0 15%);
+          transform: translate(-2px, -2px);
+        }
+        70% {
+          clip-path: polygon(0 55%, 100% 55%, 100% 60%, 0 60%);
+          transform: translate(2px, 0);
+        }
+        80% {
+          clip-path: polygon(0 25%, 100% 25%, 100% 30%, 0 30%);
+          transform: translate(-2px, 2px);
+        }
+        90% {
+          clip-path: polygon(0 70%, 100% 70%, 100% 75%, 0 75%);
+          transform: translate(2px, -2px);
+        }
+        100% {
+          clip-path: polygon(0 0%, 100% 0%, 100% 5%, 0 5%);
+          transform: translate(0);
+        }
+      }
+
+      @keyframes glitch-anim-2 {
+        0% {
+          clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%);
+          transform: translate(2px, 2px);
+        }
+        10% {
+          clip-path: polygon(0 75%, 100% 75%, 100% 80%, 0 80%);
+          transform: translate(-2px, 0);
+        }
+        20% {
+          clip-path: polygon(0 20%, 100% 20%, 100% 30%, 0 30%);
+          transform: translate(2px, -2px);
+        }
+        30% {
+          clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%);
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          clip-path: polygon(0 5%, 100% 5%, 100% 10%, 0 10%);
+          transform: translate(2px, 0);
+        }
+        50% {
+          clip-path: polygon(0 85%, 100% 85%, 100% 90%, 0 90%);
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          clip-path: polygon(0 35%, 100% 35%, 100% 40%, 0 40%);
+          transform: translate(2px, 2px);
+        }
+        70% {
+          clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%);
+          transform: translate(-2px, 0);
+        }
+        80% {
+          clip-path: polygon(0 90%, 100% 90%, 100% 95%, 0 95%);
+          transform: translate(2px, -2px);
+        }
+        90% {
+          clip-path: polygon(0 15%, 100% 15%, 100% 20%, 0 20%);
+          transform: translate(-2px, 2px);
+        }
+        100% {
+          clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%);
+          transform: translate(0);
+        }
+      }
+
+      @keyframes glitch-skew {
+        0% {
+          transform: skew(0deg);
+        }
+        10% {
+          transform: skew(-2deg);
+        }
+        20% {
+          transform: skew(2deg);
+        }
+        30% {
+          transform: skew(-1deg);
+        }
+        40% {
+          transform: skew(1deg);
+        }
+        50% {
+          transform: skew(0deg);
+        }
+        60% {
+          transform: skew(1deg);
+        }
+        70% {
+          transform: skew(-1deg);
+        }
+        80% {
+          transform: skew(2deg);
+        }
+        90% {
+          transform: skew(-2deg);
+        }
+        100% {
+          transform: skew(0deg);
+        }
+      }
+
+      /* Status badge pulse */
+      .status-badge {
+        animation: statusPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes statusPulse {
+        0%,
+        100% {
+          box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+          opacity: 1;
+        }
+        50% {
+          box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+          opacity: 0.8;
+        }
+      }
+
+      /* Fade in on scroll */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Stagger animation delays */
+      .delay-100 {
+        animation-delay: 0.1s;
+      }
+      .delay-200 {
+        animation-delay: 0.2s;
+      }
+      .delay-300 {
+        animation-delay: 0.3s;
+      }
+      .delay-400 {
+        animation-delay: 0.4s;
+      }
+      .delay-500 {
+        animation-delay: 0.5s;
+      }
+      .delay-600 {
+        animation-delay: 0.6s;
+      }
+
+      /* Terminal boot text */
+      .terminal-boot {
+        font-size: 0.75rem;
+        line-height: 1.5;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-primary);
+        border-left: 1px solid rgba(0, 255, 65, 0.2);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--neon-green);
+        box-shadow: 0 0 10px var(--neon-green);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--neon-cyan);
+        box-shadow: 0 0 10px var(--neon-cyan);
+      }
+
+      /* Hex pattern decoration */
+      .hex-pattern {
+        background-image: url("data:image/svg+xml,%3Csvg width='28' height='49' viewBox='0 0 28 49' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='rgba(0, 255, 65, 0.03)' fill-rule='evenodd'%3E%3Cg fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      }
+
+      /* Button hover effect */
+      .btn-cyber {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .btn-cyber::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: var(--neon-cyan);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.5s, height 0.5s;
+      }
+
+      .btn-cyber:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .btn-cyber span {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Capability card icon animation */
+      .capability-icon {
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 0 5px var(--neon-green));
+      }
+
+      .holo-card:hover .capability-icon {
+        transform: scale(1.2) rotate(5deg);
+        filter: drop-shadow(0 0 15px var(--neon-cyan));
+      }
+
+      /* Section header underline */
+      .section-header::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--neon-green), transparent);
+        margin-top: 8px;
+        animation: glowLine 2s ease-in-out infinite;
+      }
+
+      @keyframes glowLine {
+        0%,
+        100% {
+          box-shadow: 0 0 5px var(--neon-green);
+        }
+        50% {
+          box-shadow: 0 0 15px var(--neon-green);
+        }
+      }
+    </style>
+  </head>
+  <body class="h-full">
+    <!-- Background layers -->
+    <canvas id="matrix-canvas"></canvas>
+    <div class="cyber-grid"></div>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+    <div
+      class="relative z-10 min-h-full w-full overflow-auto"
+      x-data="portfolioApp()"
+      x-init="init()"
+    >
+      <!-- Hero Section -->
+      <section
+        class="min-h-screen flex items-center justify-center px-6 py-20 hex-pattern"
+      >
+        <div class="max-w-6xl w-full">
+          <!-- Terminal boot sequence -->
+          <div class="terminal-boot mb-8 text-green-500 space-y-1 fade-in-up">
+            <p>&gt; INITIALIZING NEURAL INTERFACE...</p>
+            <p>&gt; LOADING IDENTITY MATRIX...</p>
+            <p>&gt; DECRYPTING USER CREDENTIALS...</p>
+            <p class="text-cyan-400">
+              &gt; <span class="glow-cyan">ACCESS GRANTED</span>
             </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>2<sup>nd</sup> January 2002</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span><a href="https://almax-git.github.io/Ali_Mustapha_Shettima">almax-git.github.io</a></span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+234 81 6514 1519</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Maiduguri, Borno State, Nigeria </span></li>
-                </ul>
+          </div>
+          <!-- Main identity -->
+          <div class="fade-in-up delay-200">
+            <h1
+              class="text-5xl sm:text-7xl lg:text-8xl font-display font-black mb-6 tracking-tight leading-none"
+              x-text="config.developer_name"
+            ></h1>
+            <div class="flex items-center gap-3 mb-12">
+              <div
+                class="h-px flex-1 bg-gradient-to-r from-green-500 to-transparent"
+              ></div>
+              <p
+                class="text-xl sm:text-2xl lg:text-3xl font-light text-cyan-400"
+                x-text="config.tagline"
+              ></p>
+              <span class="typing-cursor text-cyan-400 text-2xl font-bold"
+                >█</span
+              >
+            </div>
+            <!-- Status indicators -->
+            <div class="flex flex-wrap gap-4 text-xs sm:text-sm font-medium">
+              <div
+                class="px-4 py-2 border border-green-500 border-glow-animated status-badge text-green-500"
+              >
+                <span
+                  class="inline-block w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"
+                ></span>
+                STATUS: ONLINE
               </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>22</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Diploma:</strong>Computer Science</li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>alimustaphashettima@gmail.com</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-                </ul>
+              <div
+                class="px-4 py-2 border border-cyan-400 border-glow-cyan-animated status-badge text-cyan-400"
+              >
+                <span
+                  class="inline-block w-2 h-2 bg-cyan-400 rounded-full mr-2 animate-pulse"
+                ></span>
+                SECURITY: MAXIMUM
+              </div>
+              <div
+                class="px-4 py-2 border border-green-500 border-glow-animated status-badge text-green-500"
+              >
+                <span
+                  class="inline-block w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"
+                ></span>
+                MODE: AVAILABLE
               </div>
             </div>
-            <p class="py-3"> 
-              A results-oriented IT specialist with a robust foundation in programming languages such as PHP, HTML, CSS, SQL,
-              and JavaScript, complemented by comprehensive experience in web development on platforms like WordPress
-              and proficiency in database administration. Adept in operating systems including Windows and Linux, with a
-              demonstrated ability to excel in Android app development. Skilled in crafting professional content,
-              presentations, and possessing a keen eye for ethical hacking methodologies. Known for a hands-on approach
-              to computer maintenance, including hardware repairs, and an inclination towards exploring cutting-edge
-              technologies.
+          </div>
+          <!-- Scroll indicator -->
+          <div
+            class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center fade-in-up delay-500"
+          >
+            <div class="text-gray-600 text-xs mb-2">SCROLL TO EXPLORE</div>
+            <div
+              class="w-px h-12 bg-gradient-to-b from-green-500 to-transparent mx-auto animate-pulse"
+            ></div>
+          </div>
+        </div>
+      </section>
+      <!-- About Section -->
+      <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+          <h2
+            class="text-4xl sm:text-5xl font-display font-bold mb-12 glow-cyan section-header fade-in-up"
+            x-text="config.about_heading"
+          ></h2>
+          <div class="border-l-4 border-green-500 pl-8 fade-in-up delay-200">
+            <p
+              class="text-xl sm:text-2xl leading-relaxed text-gray-300 font-light"
+              x-text="config.about_text"
+            ></p>
+          </div>
+        </div>
+      </section>
+      <!-- Core Capabilities -->
+      <section
+        class="py-24 px-6 bg-gradient-to-b from-transparent via-black to-transparent"
+      >
+        <div class="max-w-7xl mx-auto">
+          <h2
+            class="text-4xl sm:text-5xl font-display font-bold mb-16 glow-green section-header fade-in-up"
+            x-text="config.capabilities_heading"
+          ></h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <template x-for="(cap, index) in capabilities" :key="index">
+              <div
+                class="holo-card p-8 fade-in-up"
+                :class="`delay-${(index + 1) * 100}`"
+              >
+                <div
+                  class="text-5xl mb-4 capability-icon"
+                  x-text="cap.icon"
+                ></div>
+                <h3
+                  class="text-xl font-display font-semibold mb-3 text-green-400"
+                  x-text="cap.title"
+                ></h3>
+                <p
+                  class="text-gray-400 text-sm leading-relaxed"
+                  x-text="cap.desc"
+                ></p>
+              </div>
+            </template>
+          </div>
+        </div>
+      </section>
+      <!-- Projects Section -->
+      <section class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+          <h2
+            class="text-4xl sm:text-5xl font-display font-bold mb-16 glow-cyan section-header fade-in-up"
+            x-text="config.projects_heading"
+          ></h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <template x-for="(project, index) in projects" :key="index">
+              <div
+                class="border-glow-animated bg-black bg-opacity-60 p-8 fade-in-up"
+                :class="`delay-${(index + 1) * 100}`"
+              >
+                <div class="flex items-start justify-between mb-6">
+                  <h3
+                    class="text-2xl font-display font-bold text-green-400 glitch flex-1"
+                    :data-text="project.title"
+                    x-text="project.title"
+                  ></h3>
+                  <span
+                    class="px-3 py-1 text-xs font-bold border status-badge ml-4"
+                    :class="{
+                    'border-green-500 text-green-500': project.status === 'ACTIVE',
+                    'border-yellow-400 text-yellow-400': project.status === 'EXPERIMENTAL',
+                    'border-cyan-400 text-cyan-400': project.status === 'DEPLOYED'
+                  }"
+                    x-text="project.status"
+                  ></span>
+                </div>
+                <p
+                  class="text-gray-300 mb-6 leading-relaxed"
+                  x-text="project.desc"
+                ></p>
+                <div class="flex flex-wrap gap-2">
+                  <template x-for="tech in project.tech" :key="tech"
+                    ><span
+                      class="px-3 py-1 text-xs border border-gray-700 text-gray-500 hover:border-cyan-400 hover:text-cyan-400 transition-colors"
+                      x-text="tech"
+                    ></span>
+                  </template>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+      </section>
+      <!-- Philosophy Section -->
+      <section
+        class="py-24 px-6 bg-gradient-to-b from-transparent via-black to-transparent"
+      >
+        <div class="max-w-5xl mx-auto">
+          <h2
+            class="text-4xl sm:text-5xl font-display font-bold mb-12 glow-green section-header fade-in-up"
+            x-text="config.philosophy_heading"
+          ></h2>
+          <div
+            class="border-glow-cyan-animated p-10 bg-black bg-opacity-80 fade-in-up delay-200"
+          >
+            <p
+              class="text-2xl sm:text-3xl font-display leading-relaxed text-gray-300"
+              x-text="config.philosophy_text"
+            ></p>
+          </div>
+        </div>
+      </section>
+      <!-- Tech Stack -->
+      <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+          <h2
+            class="text-4xl sm:text-5xl font-display font-bold mb-12 glow-cyan section-header fade-in-up"
+            x-text="config.tech_heading"
+          ></h2>
+          <div
+            class="border-glow-animated bg-black bg-opacity-90 p-8 fade-in-up delay-200"
+          >
+            <p class="text-green-500 mb-2 text-sm">
+              &gt; COMPILING TECHNOLOGY MANIFEST...
+            </p>
+            <div
+              class="h-px bg-gradient-to-r from-green-500 to-transparent mb-6"
+            ></div>
+            <div class="space-y-3">
+              <template x-for="(tech, index) in techStack" :key="index">
+                <div class="flex items-center gap-3 text-sm">
+                  <span class="text-cyan-400">└──</span>
+                  <span class="text-gray-300" x-text="tech"></span>
+                </div>
+              </template>
+            </div>
+            <div
+              class="h-px bg-gradient-to-r from-green-500 to-transparent mt-6 mb-2"
+            ></div>
+            <p class="text-green-500 text-sm">
+              &gt; COMPILATION COMPLETE <span class="typing-cursor">█</span>
             </p>
           </div>
         </div>
+      </section>
+      <!-- Contact Section -->
+      <section class="py-32 px-6 relative overflow-hidden">
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-transparent via-green-950 via-opacity-5 to-transparent"
+        ></div>
+        <div
+          class="max-w-4xl mx-auto text-center relative z-10"
+          x-data="{ open: false }"
+        >
+          <h2
+            class="text-5xl sm:text-6xl font-display font-black mb-6 glow-green fade-in-up"
+            x-text="config.contact_heading"
+          ></h2>
+          <p
+            class="text-lg text-gray-400 mb-12 fade-in-up delay-200"
+            x-text="config.contact_subtitle"
+          ></p>
+          <button
+            class="btn-cyber px-12 py-6 border-2 border-cyan-400 text-cyan-400 text-xl font-display font-bold hover:text-black transition-all duration-300 glitch fade-in-up delay-300"
+            :data-text="config.contact_cta"
+            x-on:click="open = !open"
+          >
+            <span x-text="config.contact_cta"></span>
+          </button>
 
-      </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Stats Section -->
-    <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-emoji-smile"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="100" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Happy Clients</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-journal-richtext"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="33" data-purecounter-duration="5" class="purecounter"></span>
-              <p>Projects</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-headset"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="247" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-            <i class="bi bi-people"></i>
-            <div class="stats-item">
-              <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hard Workers</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Stats Section -->
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-        <p>Code your dreams into reality</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row skills-content skills-animation">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>PHP</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>SQL</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-            <div class="progress">
-              <span class="skill"><span>HTML</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>CSS</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>JavaScript</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Jquery</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>Laravel</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Livewire</span> <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Bootstrap</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>TailWind</span> <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Linux and Other Debian OS</span> <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Database Administration</span> <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Skills Section -->
-
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Resume</h2>
-        <p>A results-oriented IT specialist with a robust foundation in programming languages such as HTML, CSS, SQL,
-        and JavaScript, complemented by comprehensive experience in web development on platforms like WordPress
-        and proficiency in database administration. Adept in operating systems including Windows and Linux, with a
-        demonstrated ability to excel in Android app development. Skilled in crafting professional content,
-        presentations, and possessing a keen eye for ethical hacking methodologies. Known for a hands-on approach
-        to computer maintenance, including hardware repairs, and an inclination towards exploring cutting-edge
-        technologies.</p>
-       </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Sumary</h3>
-
-            <div class="resume-item pb-0">
-              <h4>Ali Mustapha Shettima</h4>
-              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-              <ul>
-                <li>Maiduguri, Borno</li>
-                <li>(234) 81 6514 1519</li>
-                <li>alimustaphashettima@gmail.com</li>
+          <!-- Contact Modal -->
+          <div
+            x-on:click="open = false"
+            x-show="open"
+            x-transition
+            class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-6"
+          >
+            <div
+              class="bg-black bg-opacity-90 border-glow-animated p-8 max-w-md w-full"
+            >
+              <h3 class="text-2xl font-display font-bold mb-4 text-green-400">
+                SECURE CONTACT CHANNEL
+              </h3>
+              <p class="text-gray-300 mb-6">
+                To establish a secure connection, please reach out via the
+                following encrypted methods:
+              </p>
+              <ul class="list-disc list-inside text-gray-400 mb-6">
+                <li>
+                  Email:
+                  <a href="mailto:abituho7s@mozmail.com"
+                    >abituho7s@mozmail.com</a
+                  >
+                </li>
               </ul>
-            </div><!-- Edn Resume Item -->
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Diploma in Computer Science (Awaiting Result)</h4>
-              <h5>2022 - 2024</h5>
-              <p><em>Ramat Polytechnic Maiduguri</em></p>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Secondary School Graduation </h4>
-              <h5>2020 - 2014</h5>
-              <p><em>Ummul Qura Science Academy. Azare</em></p>
-              <p>Academic Excellence: 8 credits in WAEC and 9 credits in NECO, including English and
-              Mathematics. Consistent dedication to academic and extracurricular pursuits</p>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Ummul Qura Science Academy. Azare</h4>
-              <h5>2005 - 2013</h5>
-              <p><em>Primary School Certificate</em></p>
-            </div><!-- Edn Resume Item -->
-
+            </div>
           </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Web Development</h4>
-              <h5>2020 - Present</h5>
-              <p><em>With Laravel Framework</em></p>
-              <ul>
-                <li>Lead in the design, development, and implementation of the Web Application</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-            <div class="resume-item">
-              <h4>Ethical Hacking</h4>
-              <h5>2023 - Present</h5>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2022 - Present</h5>
-              <p><em>Canva and Microsoft Champ</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 10+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
+        </div>
+      </section>
+      <!-- Footer -->
+      <footer class="py-12 px-6 border-t border-green-500 border-opacity-20">
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600"
+          >
+            <p>&gt; ENCRYPTED TRANSMISSION :: ALL RIGHTS RESERVED</p>
+            <p>&gt; SYSTEM SECURE :: CONNECTION PROTECTED</p>
           </div>
-
         </div>
-
-      </div>
-
-    </section><!-- /Resume Section -->
-
-   
- 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>where dreams become reality and the power of technology knows no boundaries</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Address</h3>
-                <p>Down next to kuru yoghourt at Ramat Polytechnic Maiduguri, Borno State. <br>Nigeria.</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Call Us</h3>
-                <p>+234 81 6514 1519</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Email Us</h3>
-                <p>alimustaphashettima@gmail.com</p>
-              </div>
-            </div><!-- End Info Item -->
-
-          </div>
-
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-
-  </main>
-
-  <footer id="footer" class="footer position-relative light-background">
-    <div class="container">
-      <h3 class="sitename">ALmax</h3>
-      <p>Code your dreams into reality.</p>
-      <div class="social-links d-flex justify-content-center">
-        <a href="https://x.com/AliMustaphaShe3"><i class="bi bi-twitter-x"></i></a>
-        <a href="https://web.facebook.com/profile.php?id=100084549103453"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/almax247/"><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href="https://ng.linkedin.com/in/almax247"><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">ALmax</strong> <span>All Rights Reserved</span>
-        </div>
-        <div class="credits">
-          Designed by <a href="#">Ali Mustapha Shettima</a>
-        </div>
-      </div>
+      </footer>
     </div>
-  </footer>
+    <script>
+      function portfolioApp() {
+        const defaultConfig = {
+          developer_name: "Ali Mustapha Shettima",
+          tagline:
+            "System Architect • Full-Stack Engineer • Security Specialist",
+          about_heading: "WHO I AM",
+          about_text:
+            "I architect digital systems that don't just work—they scale, secure, and survive. With expertise spanning full-stack development, payment infrastructure, and security-first engineering, I build production-grade platforms that handle real-world complexity. Every line of code serves a purpose. Every system is designed to evolve. I don't chase trends—I engineer solutions that last.",
+          capabilities_heading: "CORE CAPABILITIES",
+          projects_heading: "DEPLOYED SYSTEMS",
+          philosophy_heading: "CODE OF PRACTICE",
+          philosophy_text:
+            "Efficiency over noise • Function over hype • Systems that scale and survive • Continuous learning, aggressive adaptation",
+          tech_heading: "TECH ARSENAL",
+          contact_heading: "ESTABLISH CONNECTION",
+          contact_subtitle:
+            "SECURE CHANNEL AVAILABLE :: ENCRYPTED TRANSMISSION READY",
+          contact_cta: "INITIATE CONTACT",
+        };
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        return {
+          config: window.elementSdk?.config || defaultConfig,
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+          capabilities: [
+            {
+              icon: "⚡",
+              title: "Full-Stack Architecture",
+              desc: "End-to-end application development with modern frameworks, scalable infrastructure, and optimized performance",
+            },
+            {
+              icon: "🔐",
+              title: "Security Engineering",
+              desc: "Threat modeling, encryption protocols, secure authentication systems, and penetration-resistant architecture",
+            },
+            {
+              icon: "💳",
+              title: "Payment Systems",
+              desc: "PCI-compliant payment processing, wallet infrastructure, transaction security, and financial integrations",
+            },
+            {
+              icon: "🚀",
+              title: "Laravel Mastery",
+              desc: "Enterprise-grade backend systems, API development, queue management, and complex business logic",
+            },
+            {
+              icon: "🌐",
+              title: "API Design",
+              desc: "RESTful and GraphQL architectures for seamless integration, third-party connectivity, and microservices",
+            },
+            {
+              icon: "⚙️",
+              title: "DevOps & Automation",
+              desc: "CI/CD pipelines, infrastructure as code, containerization, monitoring, and performance optimization",
+            },
+          ],
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+          projects: [
+            {
+              title: "NEXUS PLATFORM",
+              status: "ACTIVE",
+              desc: "Multi-tenant SaaS ecosystem serving 10,000+ users with real-time processing, advanced analytics, and 99.9% uptime",
+              tech: ["Laravel", "Vue.js", "Redis", "PostgreSQL", "WebSockets"],
+            },
+            {
+              title: "QUANTUM PAY",
+              status: "DEPLOYED",
+              desc: "Secure payment gateway processing $2M+ monthly with zero security breaches and PCI DSS Level 1 compliance",
+              tech: ["PHP", "Stripe", "Webhooks", "AES-256", "2FA"],
+            },
+            {
+              title: "TITAN ERP",
+              status: "DEPLOYED",
+              desc: "Complete business management suite with inventory control, CRM, financial reporting, and custom workflow automation",
+              tech: ["Laravel", "MySQL", "REST API", "PDF Generation", "OAuth"],
+            },
+            {
+              title: "WEB3 AUTH",
+              status: "EXPERIMENTAL",
+              desc: "Decentralized authentication system using blockchain technology for cryptographic identity verification",
+              tech: ["Ethereum", "Web3.js", "Solidity", "MetaMask", "IPFS"],
+            },
+          ],
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+          techStack: [
+            "PHP / Laravel :: Backend Architecture & Business Logic",
+            "JavaScript / Angular / Vue.js / Alpine.js :: Frontend Engineering",
+            "Java / C / C++ / Python / ++More :: Development Stack",
+            "MySQL / PostgreSQL / Redis / MongoDB / SQLite :: Database & Caching Systems",
+            "RESTful APIs / GraphQL :: Integration & Communication Layer",
+            "Flutterwave / Stripe / Blockchain :: Payment Infrastructure",
+            "OAuth2 / JWT / AES Encryption :: Security Protocols",
+            "Docker / CI/CD / Git :: DevOps & Version Control",
+            "TailwindCSS / Flux / Modern UI/UX :: Interface Design",
+            "WebSockets / Queue Systems :: Real-time Processing",
+            "AWS / Linux / Nginx :: Cloud Infrastructure",
+            "Windows Server / Apache :: Legacy System Support",
+            "Burpsuite / OWASP :: Security Testing & Auditing",
+          ],
 
-</body>
+          init() {
+            this.initMatrix();
+            this.initScrollAnimations();
 
+            if (window.elementSdk) {
+              window.elementSdk.init({
+                defaultConfig,
+                onConfigChange: async (config) => {
+                  this.config = config;
+                },
+                mapToCapabilities: (config) => ({
+                  recolorables: [
+                    {
+                      get: () => config.background_color || "#000000",
+                      set: (value) => {
+                        config.background_color = value;
+                        document.documentElement.style.setProperty(
+                          "--bg-primary",
+                          value
+                        );
+                        window.elementSdk.setConfig({
+                          background_color: value,
+                        });
+                      },
+                    },
+                    {
+                      get: () => config.neon_green || "#00ff41",
+                      set: (value) => {
+                        config.neon_green = value;
+                        document.documentElement.style.setProperty(
+                          "--neon-green",
+                          value
+                        );
+                        window.elementSdk.setConfig({ neon_green: value });
+                      },
+                    },
+                    {
+                      get: () => config.neon_cyan || "#00ffff",
+                      set: (value) => {
+                        config.neon_cyan = value;
+                        document.documentElement.style.setProperty(
+                          "--neon-cyan",
+                          value
+                        );
+                        window.elementSdk.setConfig({ neon_cyan: value });
+                      },
+                    },
+                    {
+                      get: () => config.text_color || "#e0e0e0",
+                      set: (value) => {
+                        config.text_color = value;
+                        document.documentElement.style.setProperty(
+                          "--text-primary",
+                          value
+                        );
+                        window.elementSdk.setConfig({ text_color: value });
+                      },
+                    },
+                  ],
+                  borderables: [],
+                  fontEditable: undefined,
+                  fontSizeable: undefined,
+                }),
+                mapToEditPanelValues: (config) =>
+                  new Map([
+                    [
+                      "developer_name",
+                      config.developer_name || defaultConfig.developer_name,
+                    ],
+                    ["tagline", config.tagline || defaultConfig.tagline],
+                    [
+                      "about_heading",
+                      config.about_heading || defaultConfig.about_heading,
+                    ],
+                    [
+                      "about_text",
+                      config.about_text || defaultConfig.about_text,
+                    ],
+                    [
+                      "capabilities_heading",
+                      config.capabilities_heading ||
+                        defaultConfig.capabilities_heading,
+                    ],
+                    [
+                      "projects_heading",
+                      config.projects_heading || defaultConfig.projects_heading,
+                    ],
+                    [
+                      "philosophy_heading",
+                      config.philosophy_heading ||
+                        defaultConfig.philosophy_heading,
+                    ],
+                    [
+                      "philosophy_text",
+                      config.philosophy_text || defaultConfig.philosophy_text,
+                    ],
+                    [
+                      "tech_heading",
+                      config.tech_heading || defaultConfig.tech_heading,
+                    ],
+                    [
+                      "contact_heading",
+                      config.contact_heading || defaultConfig.contact_heading,
+                    ],
+                    [
+                      "contact_subtitle",
+                      config.contact_subtitle || defaultConfig.contact_subtitle,
+                    ],
+                    [
+                      "contact_cta",
+                      config.contact_cta || defaultConfig.contact_cta,
+                    ],
+                  ]),
+              });
+            }
+          },
+
+          initMatrix() {
+            const canvas = document.getElementById("matrix-canvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const chars =
+              "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const fontSize = 14;
+            const columns = Math.floor(canvas.width / fontSize);
+            const drops = Array(columns).fill(1);
+
+            function draw() {
+              ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+              ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+              ctx.fillStyle = "#00ff41";
+              ctx.font = `${fontSize}px monospace`;
+
+              for (let i = 0; i < drops.length; i++) {
+                const char = chars[Math.floor(Math.random() * chars.length)];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                ctx.fillText(char, x, y);
+
+                if (y > canvas.height && Math.random() > 0.975) {
+                  drops[i] = 0;
+                }
+
+                drops[i]++;
+              }
+            }
+
+            setInterval(draw, 33);
+
+            window.addEventListener("resize", () => {
+              canvas.width = window.innerWidth;
+              canvas.height = window.innerHeight;
+            });
+          },
+
+          initScrollAnimations() {
+            const observer = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((entry) => {
+                  if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                  }
+                });
+              },
+              { threshold: 0.1 }
+            );
+
+            document.querySelectorAll(".fade-in-up").forEach((el) => {
+              observer.observe(el);
+            });
+          },
+        };
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  </body>
 </html>
