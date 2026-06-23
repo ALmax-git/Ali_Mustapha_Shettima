@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
@@ -59,10 +59,8 @@
         height: 100%;
         pointer-events: none;
         z-index: 1;
-        background-image: linear-gradient(
-            rgba(0, 255, 65, 0.03) 1px,
-            transparent 1px
-          ),
+        background-image:
+          linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
         background-size: 50px 50px;
         animation: gridScroll 20s linear infinite;
@@ -120,19 +118,27 @@
       /* Enhanced glow effects */
       .glow-green {
         color: var(--neon-green);
-        text-shadow: 0 0 2px var(--neon-green), 0 0 2px var(--neon-green),
-          0 0 2px var(--neon-green), 0 0 2px rgba(0, 255, 64, 0.38);
+        text-shadow:
+          0 0 2px var(--neon-green),
+          0 0 2px var(--neon-green),
+          0 0 2px var(--neon-green),
+          0 0 2px rgba(0, 255, 64, 0.38);
       }
 
       .glow-cyan {
         color: var(--neon-cyan);
-        text-shadow: 0 0 1px var(--neon-cyan), 0 0 1px var(--neon-cyan),
-          0 0 2px var(--neon-cyan), 0 0 1px rgba(0, 255, 255, 0.28);
+        text-shadow:
+          0 0 1px var(--neon-cyan),
+          0 0 1px var(--neon-cyan),
+          0 0 2px var(--neon-cyan),
+          0 0 1px rgba(0, 255, 255, 0.28);
       }
 
       .glow-pink {
         color: var(--neon-pink);
-        text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink),
+        text-shadow:
+          0 0 5px var(--neon-pink),
+          0 0 10px var(--neon-pink),
           0 0 10px var(--neon-pink);
       }
 
@@ -140,21 +146,24 @@
       .border-glow-animated {
         position: relative;
         border: 1px solid var(--neon-green);
-        box-shadow: 0 0 5px var(--neon-green),
+        box-shadow:
+          0 0 5px var(--neon-green),
           inset 0 0 5px rgba(0, 255, 65, 0.1);
         transition: all 0.3s ease;
       }
 
       .border-glow-animated:hover {
         border-color: var(--neon-cyan);
-        box-shadow: 0 0 15px var(--neon-cyan),
+        box-shadow:
+          0 0 15px var(--neon-cyan),
           inset 0 0 15px rgba(0, 255, 255, 0.2);
         transform: translateY(-2px);
       }
 
       .border-glow-cyan-animated {
         border: 1px solid var(--neon-cyan);
-        box-shadow: 0 0 5px var(--neon-cyan),
+        box-shadow:
+          0 0 5px var(--neon-cyan),
           inset 0 0 5px rgba(0, 255, 255, 0.1);
       }
 
@@ -193,7 +202,8 @@
 
       .holo-card:hover {
         border-color: var(--neon-cyan);
-        box-shadow: 0 0 10px rgba(0, 255, 255, 0.3),
+        box-shadow:
+          0 0 10px rgba(0, 255, 255, 0.3),
           inset 0 0 10px rgba(0, 255, 255, 0.1);
         transform: translateY(-5px) scale(1.02);
       }
@@ -387,11 +397,15 @@
       @keyframes statusPulse {
         0%,
         100% {
-          box-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+          box-shadow:
+            0 0 5px currentColor,
+            0 0 10px currentColor;
           opacity: 1;
         }
         50% {
-          box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+          box-shadow:
+            0 0 10px currentColor,
+            0 0 20px currentColor;
           opacity: 0.8;
         }
       }
@@ -478,7 +492,9 @@
         background: var(--neon-cyan);
         border-radius: 50%;
         transform: translate(-50%, -50%);
-        transition: width 0.5s, height 0.5s;
+        transition:
+          width 0.5s,
+          height 0.5s;
       }
 
       .btn-cyber:hover::before {
@@ -522,6 +538,45 @@
           box-shadow: 0 0 15px var(--neon-green);
         }
       }
+      .mainframe-glitch {
+        animation: screenGlitch 0.3s steps(2) infinite;
+        filter: hue-rotate(90deg) contrast(150%);
+      }
+      @keyframes screenGlitch {
+        0% {
+          transform: translate(1px, 1px) skew(1deg);
+        }
+        10% {
+          transform: translate(-1px, -2px) skew(-2deg);
+        }
+        20% {
+          transform: translate(-3px, 0px) skew(3deg);
+        }
+        30% {
+          transform: translate(0px, 2px) skew(0deg);
+        }
+        40% {
+          transform: translate(1px, -1px) skew(1deg);
+        }
+        50% {
+          transform: translate(-1px, 2px) skew(-1deg);
+        }
+        60% {
+          transform: translate(-3px, 1px) skew(0deg);
+        }
+        70% {
+          transform: translate(2px, 1px) skew(-2deg);
+        }
+        80% {
+          transform: translate(-1px, -1px) skew(2deg);
+        }
+        90% {
+          transform: translate(2px, 2px) skew(1deg);
+        }
+        100% {
+          transform: translate(1px, -2px) skew(-1deg);
+        }
+      }
     </style>
   </head>
   <body class="h-full">
@@ -534,6 +589,7 @@
       class="relative z-10 min-h-full w-full overflow-auto"
       x-data="portfolioApp()"
       x-init="init()"
+      :class="{ 'mainframe-glitch': isGlitched }"
     >
       <!-- Hero Section -->
       <section
@@ -621,6 +677,124 @@
           </div>
         </div>
       </section>
+
+      <!-- Neural Terminal Section -->
+      <section class="py-24 px-6 bg-black bg-opacity-40">
+        <div class="max-w-5xl mx-auto">
+          <h2
+            class="text-4xl sm:text-5xl font-display font-bold mb-8 glow-green section-header fade-in-up"
+          >
+            NEURAL CONSOLE
+          </h2>
+          <p
+            class="text-gray-400 mb-8 max-w-2xl text-sm sm:text-base fade-in-up delay-100"
+          >
+            Establish a direct command-line interface with the core-x mainframe.
+            Interact with ALmax systems in real time. Type
+            <span class="text-cyan-400 font-semibold font-mono">help</span> to
+            begin.
+          </p>
+
+          <!-- Terminal Window -->
+          <div
+            class="border border-green-500 border-opacity-50 rounded-lg overflow-hidden bg-black bg-opacity-85 shadow-[0_0_20px_rgba(0,255,65,0.15)] flex flex-col h-[500px] fade-in-up delay-200"
+            x-on:click="$refs.terminalInputField.focus()"
+          >
+            <!-- Top bar -->
+            <div
+              class="bg-gray-950 px-4 py-3 border-b border-green-500 border-opacity-30 flex items-center justify-between select-none"
+            >
+              <!-- Window controls -->
+              <div class="flex items-center gap-2">
+                <span
+                  class="w-3 h-3 rounded-full bg-rose-500 bg-opacity-70 inline-block"
+                ></span>
+                <span
+                  class="w-3 h-3 rounded-full bg-amber-500 bg-opacity-70 inline-block"
+                ></span>
+                <span
+                  class="w-3 h-3 rounded-full bg-emerald-500 bg-opacity-70 inline-block"
+                ></span>
+              </div>
+              <div
+                class="text-xs font-mono text-gray-500 font-semibold tracking-wider"
+              >
+                CORE-X::NEURAL-LINK://VISITOR
+              </div>
+              <div
+                class="text-xs font-mono text-green-500 flex items-center gap-2"
+              >
+                <span
+                  class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"
+                ></span>
+                ONLINE
+              </div>
+            </div>
+
+            <!-- Output and input space -->
+            <div
+              class="flex-1 p-6 overflow-y-auto font-mono text-xs sm:text-sm flex flex-col gap-1"
+              x-ref="terminalOutput"
+            >
+              <!-- History lines -->
+              <template x-for="(line, idx) in terminalHistory" :key="idx">
+                <div
+                  :class="{
+                  'text-cyan-400 font-bold': line.type === 'input',
+                  'text-gray-300': line.type === 'info',
+                  'text-green-400': line.type === 'success',
+                  'text-red-500 font-semibold': line.type === 'error',
+                  'text-cyan-300': line.type === 'link'
+                }"
+                  class="whitespace-pre-wrap leading-relaxed py-0.5 break-all"
+                  x-html="line.text"
+                ></div>
+              </template>
+
+              <!-- Input Prompt Line -->
+              <div
+                class="flex items-center gap-2 text-cyan-400 mt-2 font-bold select-none"
+              >
+                <span
+                  x-text="replMode ? '>>>' : '[visitor@almax-os ~]$'"
+                ></span>
+                <div class="flex-1 relative flex items-center">
+                  <input
+                    x-ref="terminalInputField"
+                    type="text"
+                    class="bg-transparent border-0 outline-none p-0 m-0 w-full font-mono text-cyan-400 focus:ring-0 focus:outline-none select-text"
+                    x-model="terminalInput"
+                    x-on:keydown.enter="executeCommand"
+                    x-on:keydown.up.prevent="
+                      if (commandHistory.length > 0) {
+                        if (historyIndex === -1) historyIndex = commandHistory.length;
+                        if (historyIndex > 0) {
+                          historyIndex--;
+                          terminalInput = commandHistory[historyIndex];
+                        }
+                      }
+                    "
+                    x-on:keydown.down.prevent="
+                      if (commandHistory.length > 0 && historyIndex !== -1) {
+                        if (historyIndex < commandHistory.length - 1) {
+                          historyIndex++;
+                          terminalInput = commandHistory[historyIndex];
+                        } else {
+                          historyIndex = -1;
+                          terminalInput = '';
+                        }
+                      }
+                    "
+                    autofocus
+                    placeholder=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Core Capabilities -->
       <section
         class="py-24 px-6 bg-gradient-to-b from-transparent via-black to-transparent"
@@ -686,6 +860,21 @@
                   class="text-gray-300 mb-6 leading-relaxed"
                   x-text="project.desc"
                 ></p>
+                <template x-if="project.link">
+                  <div class="mb-6">
+                    <a
+                      :href="project.link"
+                      target="_blank"
+                      class="inline-flex items-center gap-2 text-cyan-400 font-display text-sm font-semibold hover:text-cyan-300 transition-colors group"
+                    >
+                      ACCESS DEPLOYED SYSTEM
+                      <span
+                        class="inline-block transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                        >↗</span
+                      >
+                    </a>
+                  </div>
+                </template>
                 <div class="flex flex-wrap gap-2">
                   <template x-for="tech in project.tech" :key="tech"
                     ><span
@@ -758,7 +947,96 @@
         ></div>
         <div
           class="max-w-4xl mx-auto text-center relative z-10"
-          x-data="{ open: false }"
+          x-data="{ 
+            open: false,
+            useAltPuzzle: false,
+            puzzleGrid: [
+              [true, true, true],
+              [true, true, true],
+              [true, true, true]
+            ],
+            puzzleSolved: false,
+            copied: false,
+            solCopied: false,
+            ethCopied: false,
+            altPuzzleError: false,
+            riddleQuestion: '',
+            riddleOptions: [],
+            riddleAnswer: '',
+            riddleList: [
+              { q: 'What command is used to run a process with superuser privileges in Linux?', o: ['cd', 'sudo', 'ls', 'rm'], a: 'sudo' },
+              { q: 'According to Sci-Fi lore, what is the ultimate answer to life, the universe, and everything?', o: ['42', '3.14', '1337', '0'], a: '42' },
+              { q: 'Which server-side backend programming language is the Laravel framework built on?', o: ['PHP', 'JavaScript', 'Python', 'Ruby'], a: 'PHP' },
+              { q: 'What does IP stand for in network terminology (e.g. IP Address)?', o: ['Internet Protocol', 'Internal Process', 'Intranet Port', 'Instant Packet'], a: 'Internet Protocol' }
+            ],
+            initPuzzle() {
+              this.puzzleGrid = [
+                [true, true, true],
+                [true, true, true],
+                [true, true, true]
+              ];
+              this.puzzleSolved = false;
+              this.useAltPuzzle = false;
+              this.altPuzzleError = false;
+              for (let i = 0; i < 5; i++) {
+                const r = Math.floor(Math.random() * 3);
+                const c = Math.floor(Math.random() * 3);
+                this.toggleNode(r, c, true);
+              }
+              if (this.checkPuzzleSolved()) {
+                this.initPuzzle();
+              }
+            },
+            initAltPuzzle() {
+              this.useAltPuzzle = true;
+              this.altPuzzleError = false;
+              const riddle = this.riddleList[Math.floor(Math.random() * this.riddleList.length)];
+              this.riddleQuestion = riddle.q;
+              this.riddleOptions = [...riddle.o].sort(() => Math.random() - 0.5);
+              this.riddleAnswer = riddle.a;
+            },
+            submitRiddleAnswer(option) {
+              if (option === this.riddleAnswer) {
+                this.puzzleSolved = true;
+              } else {
+                this.altPuzzleError = true;
+                setTimeout(() => {
+                  this.initAltPuzzle();
+                }, 1200);
+              }
+            },
+            toggleNode(r, c, isScrambling = false) {
+              const toggle = (row, col) => {
+                if (row >= 0 && row < 3 && col >= 0 && col < 3) {
+                  this.puzzleGrid[row][col] = !this.puzzleGrid[row][col];
+                }
+              };
+              toggle(r, c);
+              toggle(r - 1, c);
+              toggle(r + 1, c);
+              toggle(r, c - 1);
+              toggle(r, c + 1);
+              if (!isScrambling) {
+                if (this.checkPuzzleSolved()) {
+                  this.puzzleSolved = true;
+                }
+              }
+            },
+            checkPuzzleSolved() {
+              return this.puzzleGrid.every(row => row.every(val => val === true));
+            },
+            decodeRot13(str) {
+              return str.replace(/[a-zA-Z]/g, function(c) {
+                return String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+              });
+            },
+            toggleOpen() {
+              this.open = !this.open;
+              if (this.open) {
+                this.initPuzzle();
+              }
+            }
+          }"
         >
           <h2
             class="text-5xl sm:text-6xl font-display font-black mb-6 glow-green fade-in-up"
@@ -771,7 +1049,7 @@
           <button
             class="btn-cyber px-12 py-6 border-2 border-cyan-400 text-cyan-400 text-xl font-display font-bold hover:text-black transition-all duration-300 glitch fade-in-up delay-300"
             :data-text="config.contact_cta"
-            x-on:click="open = !open"
+            x-on:click="toggleOpen()"
           >
             <span x-text="config.contact_cta"></span>
           </button>
@@ -784,23 +1062,234 @@
             class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-6"
           >
             <div
-              class="bg-black bg-opacity-90 border-glow-animated p-8 max-w-md w-full"
+              x-on:click.stop
+              class="bg-black bg-opacity-95 border border-green-500 border-opacity-50 p-8 max-w-md w-full shadow-[0_0_30px_rgba(0,255,65,0.2)] rounded-lg text-left"
             >
-              <h3 class="text-2xl font-display font-bold mb-4 text-green-400">
-                SECURE CONTACT CHANNEL
-              </h3>
-              <p class="text-gray-300 mb-6">
-                To establish a secure connection, please reach out via the
-                following encrypted methods:
-              </p>
-              <ul class="list-disc list-inside text-gray-400 mb-6">
-                <li>
-                  Email:
-                  <a href="mailto:abituho7s@mozmail.com"
-                    >abituho7s@mozmail.com</a
+              <!-- State: Unsolved (Puzzle Game) -->
+              <div x-show="!puzzleSolved">
+                <!-- Sub-state 1: Classic Node Grid Puzzle -->
+                <div x-show="!useAltPuzzle">
+                  <h3
+                    class="text-2xl font-display font-bold mb-2 text-green-400 flex items-center gap-2"
                   >
-                </li>
-              </ul>
+                    <span
+                      class="inline-block w-2.5 h-2.5 bg-green-500 animate-ping rounded-full"
+                    ></span>
+                    DECRYPTION PROTOCOL
+                  </h3>
+                  <p
+                    class="text-xs text-gray-400 mb-6 font-mono leading-relaxed"
+                  >
+                    ALIGN NEURAL NODES: Toggle the matrix nodes until the entire
+                    grid lights up green. Clicking a node toggles itself and its
+                    adjacent neighbors.
+                  </p>
+
+                  <!-- Lights Out 3x3 Grid -->
+                  <div class="grid grid-cols-3 gap-3 w-48 h-48 mx-auto my-8">
+                    <template x-for="(row, r) in puzzleGrid" :key="r">
+                      <template x-for="(active, c) in row" :key="c">
+                        <button
+                          x-on:click.stop="toggleNode(r, c)"
+                          class="w-full h-full rounded border flex items-center justify-center transition-all duration-200 transform active:scale-90"
+                          :class="active 
+                            ? 'border-green-500 bg-green-950 bg-opacity-40 text-green-400 shadow-[0_0_10px_rgba(0,255,65,0.3)]' 
+                            : 'border-red-500 bg-red-950 bg-opacity-40 text-red-400 shadow-[0_0_5px_rgba(239,68,68,0.1)]'"
+                        >
+                          <span
+                            class="w-3.5 h-3.5 rounded-full transition-colors duration-200"
+                            :class="active ? 'bg-green-400 animate-pulse' : 'bg-red-500'"
+                          ></span>
+                        </button>
+                      </template>
+                    </template>
+                  </div>
+
+                  <!-- Controls -->
+                  <div class="flex flex-col gap-3 mt-6">
+                    <div class="flex gap-4">
+                      <button
+                        x-on:click.stop="initPuzzle()"
+                        class="flex-1 py-2 border border-gray-600 hover:border-green-400 text-gray-400 hover:text-green-400 text-xs font-mono font-semibold transition-colors"
+                      >
+                        RESET NODES
+                      </button>
+                      <button
+                        x-on:click.stop="open = false"
+                        class="flex-1 py-2 border border-gray-600 hover:border-red-500 text-gray-400 hover:text-red-500 text-xs font-mono font-semibold transition-colors"
+                      >
+                        ABORT
+                      </button>
+                    </div>
+                    <button
+                      x-on:click.stop="initAltPuzzle()"
+                      class="w-full py-2 border border-cyan-500 hover:bg-cyan-950 hover:bg-opacity-25 text-cyan-400 text-xs font-mono font-semibold transition-all text-center"
+                    >
+                      Bypass: Use Easy Captcha Riddle
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Sub-state 2: Alternative Easy Puzzle -->
+                <div x-show="useAltPuzzle" x-transition>
+                  <h3
+                    class="text-2xl font-display font-bold mb-2 text-cyan-400 flex items-center gap-2"
+                  >
+                    <span
+                      class="inline-block w-2.5 h-2.5 bg-cyan-400 animate-ping rounded-full"
+                    ></span>
+                    BYPASS PROTOCOL
+                  </h3>
+                  <p
+                    class="text-xs text-gray-400 mb-6 font-mono leading-relaxed"
+                  >
+                    NEURAL RIDDLE: Solve this core systems security question to
+                    manually bypass the grid encryption.
+                  </p>
+
+                  <!-- Riddle Container -->
+                  <div
+                    class="border border-cyan-500 border-opacity-30 bg-cyan-950 bg-opacity-5 p-4 rounded mb-6 text-left"
+                  >
+                    <p
+                      class="text-sm font-mono text-cyan-300 font-semibold mb-4"
+                      x-text="riddleQuestion"
+                    ></p>
+
+                    <!-- Options -->
+                    <div class="grid grid-cols-1 gap-2.5">
+                      <template x-for="(opt, idx) in riddleOptions" :key="idx">
+                        <button
+                          x-on:click.stop="submitRiddleAnswer(opt)"
+                          class="w-full text-left px-4 py-2 text-xs border border-gray-700 hover:border-cyan-400 text-gray-300 hover:text-cyan-400 font-mono transition-colors active:scale-98"
+                          x-text="opt"
+                        ></button>
+                      </template>
+                    </div>
+                  </div>
+
+                  <!-- Error message flashing -->
+                  <div x-show="altPuzzleError" class="mb-4 text-center">
+                    <span
+                      class="text-xs text-rose-500 font-mono font-bold animate-pulse"
+                      >✖ INVALID BYPASS KEY. RECONFIGURING CODES...</span
+                    >
+                  </div>
+
+                  <!-- Controls -->
+                  <div class="flex gap-4">
+                    <button
+                      x-on:click.stop="useAltPuzzle = false"
+                      class="flex-1 py-2 border border-gray-600 hover:border-green-400 text-gray-400 hover:text-green-400 text-xs font-mono font-semibold transition-colors"
+                    >
+                      BACK TO GRID
+                    </button>
+                    <button
+                      x-on:click.stop="open = false"
+                      class="flex-1 py-2 border border-gray-600 hover:border-red-500 text-gray-400 hover:text-red-500 text-xs font-mono font-semibold transition-colors"
+                    >
+                      ABORT
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- State: Solved (Reveal Contact Data) -->
+              <div x-show="puzzleSolved" x-transition>
+                <h3
+                  class="text-2xl font-display font-bold mb-2 text-cyan-400 flex items-center gap-2"
+                >
+                  <span>✓</span> DECRYPTION COMPLETE
+                </h3>
+                <p
+                  class="text-xs text-green-400 font-mono mb-6 uppercase tracking-wider"
+                >
+                  Connection established. decrypted contact records resolved.
+                </p>
+
+                <div
+                  class="space-y-4 border border-green-500 border-opacity-30 bg-green-950 bg-opacity-10 p-4 rounded mb-6 font-mono text-sm"
+                >
+                  <!-- Email link -->
+                  <div class="flex flex-col gap-1">
+                    <span class="text-xs text-gray-500">EMAIL CHANNEL</span>
+                    <a
+                      :href="'mailto:' + decodeRot13('novghub7f@zbmznvy.pbz')"
+                      class="text-green-400 hover:underline hover:text-green-300 break-all select-all font-semibold"
+                      x-text="decodeRot13('novghub7f@zbmznvy.pbz')"
+                    ></a>
+                  </div>
+
+                  <!-- Solana Wallet -->
+                  <div
+                    class="flex flex-col gap-1.5 pt-2 border-t border-green-500 border-opacity-10"
+                  >
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-xs text-gray-500"
+                        >SOLANA (MESSAGE DROP)</span
+                      >
+                      <button
+                        x-on:click.stop="
+                          navigator.clipboard.writeText('5vdgrFjmD8WnFT8opGuWwMpLzvNLj1EiqEV1iLDjXdFN');
+                          solCopied = true;
+                          setTimeout(() => solCopied = false, 2000);
+                        "
+                        class="text-[10px] px-2 py-0.5 border border-cyan-500 text-cyan-400 hover:bg-cyan-950 hover:bg-opacity-20 transition-all font-semibold"
+                        x-text="solCopied ? 'COPIED' : 'COPY'"
+                      ></button>
+                    </div>
+                    <span
+                      class="text-xs text-cyan-400 break-all select-all font-semibold font-mono"
+                      >5vdgrFjmD8WnFT8opGuWwMpLzvNLj1EiqEV1iLDjXdFN</span
+                    >
+                  </div>
+
+                  <!-- Ethereum Wallet -->
+                  <div
+                    class="flex flex-col gap-1.5 pt-2 border-t border-green-500 border-opacity-10"
+                  >
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-xs text-gray-500"
+                        >ETHEREUM ADDRESS</span
+                      >
+                      <button
+                        x-on:click.stop="
+                          navigator.clipboard.writeText('0x982b821e56cf1a6a18a5da13415c868b3f96d773');
+                          ethCopied = true;
+                          setTimeout(() => ethCopied = false, 2000);
+                        "
+                        class="text-[10px] px-2 py-0.5 border border-cyan-500 text-cyan-400 hover:bg-cyan-950 hover:bg-opacity-20 transition-all font-semibold"
+                        x-text="ethCopied ? 'COPIED' : 'COPY'"
+                      ></button>
+                    </div>
+                    <span
+                      class="text-xs text-cyan-400 break-all select-all font-semibold font-mono"
+                      >0x982b821e56cf1a6a18a5da13415c868b3f96d773</span
+                    >
+                  </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                  <button
+                    x-on:click.stop="
+                      navigator.clipboard.writeText(decodeRot13('novghub7f@zbmznvy.pbz'));
+                      copied = true;
+                      setTimeout(() => copied = false, 2000);
+                    "
+                    class="flex-1 py-3 border border-cyan-400 text-cyan-400 hover:bg-cyan-950 hover:bg-opacity-20 text-xs font-mono font-bold transition-all"
+                  >
+                    <span
+                      x-text="copied ? 'COPIED ADDRESS' : 'COPY EMAIL ADDRESS'"
+                    ></span>
+                  </button>
+                  <button
+                    x-on:click.stop="initPuzzle()"
+                    class="py-3 px-4 border border-gray-600 hover:border-red-400 text-gray-400 hover:text-red-400 text-xs font-mono transition-colors"
+                  >
+                    RE-LOCK
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -875,33 +1364,44 @@
           ],
 
           projects: [
-  {
-    title: "QTIMER CBT SYSTEM",
-    status: "DEPLOYED",
-    desc: "Computer-based testing platform for schools and CBT centers with secure exams, timing control, and automated result processing",
-    tech: ["PHP", "Laravel", "MySQL", "JavaScript", "CBT Engine"],
-    link: "https://qtimer.almaxcloud.com",
-  },
-  {
-    title: "ALMAX CORE-X",
-    status: "ACTIVE",
-    desc: "Foundational tech ecosystem framework powering scalable digital systems and innovation-driven applications",
-    tech: ["Laravel", "API Architecture", "System Design", "Cloud Infra"],
-    link: "https://almaxcloud.com",
-  },
-  {
-    title: "BEAM GUARD",
-    status: "ONGOING",
-    desc: "Smart home security and threat detection system built with Raspberry Pi for real-time monitoring, alerts, and intrusion prevention",
-    tech: ["Raspberry Pi", "Python", "IoT", "Computer Vision", "Sensors"],
-  },
-  {
-    title: "SMART EGG INCUBATOR",
-    status: "DEPLOYED",
-    desc: "1000-egg capacity automated incubator using ESP microcontroller for intelligent temperature and humidity regulation",
-    tech: ["ESP32", "Embedded C", "IoT", "Sensors", "Automation"],
-  },
-],
+            {
+              title: "QTIMER CBT SYSTEM",
+              status: "DEPLOYED",
+              desc: "Computer-based testing platform for schools and CBT centers with secure exams, timing control, and automated result processing",
+              tech: ["PHP", "Laravel", "MySQL", "JavaScript", "CBT Engine"],
+              link: "https://qtimer.almaxcloud.com",
+            },
+            {
+              title: "ALMAX CORE-X",
+              status: "ACTIVE",
+              desc: "Foundational tech ecosystem framework powering scalable digital systems and innovation-driven applications",
+              tech: [
+                "Laravel",
+                "API Architecture",
+                "System Design",
+                "Cloud Infra",
+              ],
+              link: "https://almaxcloud.com",
+            },
+            {
+              title: "BEAM GUARD",
+              status: "ONGOING",
+              desc: "Smart home security and threat detection system built with Raspberry Pi for real-time monitoring, alerts, and intrusion prevention",
+              tech: [
+                "Raspberry Pi",
+                "Python",
+                "IoT",
+                "Computer Vision",
+                "Sensors",
+              ],
+            },
+            {
+              title: "SMART EGG INCUBATOR",
+              status: "DEPLOYED",
+              desc: "1000-egg capacity automated incubator using ESP microcontroller for intelligent temperature and humidity regulation",
+              tech: ["ESP32", "Embedded C", "IoT", "Sensors", "Automation"],
+            },
+          ],
 
           techStack: [
             "PHP / Laravel :: Backend Architecture & Business Logic",
@@ -917,11 +1417,24 @@
             "AWS / Linux / Nginx :: Cloud Infrastructure",
             "Windows Server / Apache :: Legacy System Support",
             "Burpsuite / OWASP :: Security Testing & Auditing",
+            "IoT / Robotic :: ESP32 Espressor Series, Raspberry Pi, Embedded Systems",
+            "",
           ],
+
+          // Terminal state variables
+          terminalInput: "",
+          terminalHistory: [],
+          commandHistory: [],
+          historyIndex: -1,
+          replMode: false,
+          isGlitched: false,
+          matrixSpeedFactor: 1,
+          matrixColorHex: "#00ff41",
 
           init() {
             this.initMatrix();
             this.initScrollAnimations();
+            this.bootTerminal();
 
             if (window.elementSdk) {
               window.elementSdk.init({
@@ -937,7 +1450,7 @@
                         config.background_color = value;
                         document.documentElement.style.setProperty(
                           "--bg-primary",
-                          value
+                          value,
                         );
                         window.elementSdk.setConfig({
                           background_color: value,
@@ -950,7 +1463,7 @@
                         config.neon_green = value;
                         document.documentElement.style.setProperty(
                           "--neon-green",
-                          value
+                          value,
                         );
                         window.elementSdk.setConfig({ neon_green: value });
                       },
@@ -961,7 +1474,7 @@
                         config.neon_cyan = value;
                         document.documentElement.style.setProperty(
                           "--neon-cyan",
-                          value
+                          value,
                         );
                         window.elementSdk.setConfig({ neon_cyan: value });
                       },
@@ -972,7 +1485,7 @@
                         config.text_color = value;
                         document.documentElement.style.setProperty(
                           "--text-primary",
-                          value
+                          value,
                         );
                         window.elementSdk.setConfig({ text_color: value });
                       },
@@ -1037,6 +1550,7 @@
           },
 
           initMatrix() {
+            const self = this;
             const canvas = document.getElementById("matrix-canvas");
             const ctx = canvas.getContext("2d");
 
@@ -1053,21 +1567,32 @@
               ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
               ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-              ctx.fillStyle = "#00ff41";
+              ctx.fillStyle = self.matrixColorHex || "#00ff41";
               ctx.font = `${fontSize}px monospace`;
 
-              for (let i = 0; i < drops.length; i++) {
-                const char = chars[Math.floor(Math.random() * chars.length)];
-                const x = i * fontSize;
-                const y = drops[i] * fontSize;
+              const speed = Math.max(
+                1,
+                Math.min(10, self.matrixSpeedFactor || 1),
+              );
+              for (let step = 0; step < speed; step++) {
+                for (let i = 0; i < drops.length; i++) {
+                  if (step === Math.floor(speed) - 1) {
+                    const char =
+                      chars[Math.floor(Math.random() * chars.length)];
+                    const x = i * fontSize;
+                    const y = drops[i] * fontSize;
+                    ctx.fillText(char, x, y);
+                  }
 
-                ctx.fillText(char, x, y);
+                  if (
+                    drops[i] * fontSize > canvas.height &&
+                    Math.random() > 0.975
+                  ) {
+                    drops[i] = 0;
+                  }
 
-                if (y > canvas.height && Math.random() > 0.975) {
-                  drops[i] = 0;
+                  drops[i]++;
                 }
-
-                drops[i]++;
               }
             }
 
@@ -1089,12 +1614,434 @@
                   }
                 });
               },
-              { threshold: 0.1 }
+              { threshold: 0.1 },
             );
 
             document.querySelectorAll(".fade-in-up").forEach((el) => {
               observer.observe(el);
             });
+          },
+
+          bootTerminal() {
+            this.terminalHistory = [
+              {
+                text: "========================================",
+                type: "info",
+              },
+              {
+                text: "      A L M A X   N E U R A L   O S     ",
+                type: "info",
+              },
+              {
+                text: "========================================",
+                type: "info",
+              },
+              { text: "SYSTEM STATUS: SECURE", type: "success" },
+              { text: "CONNECTION SECURED OVER AES-256 TUNNEL.", type: "info" },
+              { text: "Initializing shell session...", type: "info" },
+              {
+                text: "Type 'help' to query system variables.",
+                type: "success",
+              },
+              { text: "", type: "info" },
+            ];
+          },
+
+          executeCommand() {
+            const input = this.terminalInput.trim();
+            if (!input) return;
+
+            // Save to command history
+            this.commandHistory.push(input);
+            this.historyIndex = this.commandHistory.length;
+
+            // Escape input text for safe rendering
+            const escapedInput = input
+              .replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;");
+
+            if (this.replMode) {
+              this.terminalHistory.push({
+                text: `>>> ${escapedInput}`,
+                type: "input",
+              });
+              if (
+                input.toLowerCase() === "exit" ||
+                input.toLowerCase() === "quit"
+              ) {
+                this.replMode = false;
+                this.terminalHistory.push({
+                  text: "Exiting JavaScript Neural Sandbox.",
+                  type: "info",
+                });
+              } else {
+                const res = this.evaluateJS(input);
+                this.terminalHistory.push({ text: res, type: "info" });
+              }
+              this.terminalInput = "";
+              this.$nextTick(() => {
+                const container = this.$refs.terminalOutput;
+                if (container) {
+                  container.scrollTop = container.scrollHeight;
+                }
+              });
+              return;
+            }
+
+            this.terminalHistory.push({
+              text: `[visitor@almax-os ~]$ ${escapedInput}`,
+              type: "input",
+            });
+
+            const args = input.split(" ");
+            const cmd = args[0].toLowerCase();
+
+            switch (cmd) {
+              case "help":
+                this.terminalHistory.push({
+                  text: "Available commands:",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "  about        - Information about ALmax",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "  capabilities - List technical skills and capabilities",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "  projects     - View details of deployed software systems",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "  tech         - Compilation of technology arsenal",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "  sysinfo      - Display current environmental metrics",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "  contact      - Get direct encrypted communication channels",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "  matrix       - Alter neural background rain speed",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "  sandbox      - Enter the JavaScript Neural Sandbox Mode",
+                  type: "success",
+                });
+                this.terminalHistory.push({
+                  text: "  sudo [cmd]   - Attempt superuser privilege execution",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "  clear        - Flush terminal screen memory",
+                  type: "info",
+                });
+                break;
+              case "clear":
+                this.terminalHistory = [];
+                break;
+              case "about":
+                this.terminalHistory.push({
+                  text: this.config.about_text,
+                  type: "info",
+                });
+                break;
+              case "capabilities":
+                this.terminalHistory.push({
+                  text: "CORE CAPABILITIES DECRYPTED:",
+                  type: "success",
+                });
+                this.capabilities.forEach((cap) => {
+                  this.terminalHistory.push({
+                    text: `⚡ ${cap.title}: ${cap.desc}`,
+                    type: "info",
+                  });
+                });
+                break;
+              case "projects":
+                this.terminalHistory.push({
+                  text: "DEPLOYED SOFTWARE SYSTEMS:",
+                  type: "success",
+                });
+                this.projects.forEach((proj, idx) => {
+                  let projStr = `[${idx + 1}] ${proj.title} -- STATUS: ${proj.status}`;
+                  this.terminalHistory.push({ text: projStr, type: "success" });
+                  this.terminalHistory.push({
+                    text: `    Desc: ${proj.desc}`,
+                    type: "info",
+                  });
+                  this.terminalHistory.push({
+                    text: `    Tech: ${proj.tech.join(", ")}`,
+                    type: "info",
+                  });
+                  if (proj.link) {
+                    this.terminalHistory.push({
+                      text: `    Link: <a href="${proj.link}" target="_blank" class="text-cyan-400 underline hover:text-cyan-300">${proj.link}</a>`,
+                      type: "link",
+                    });
+                  }
+                  this.terminalHistory.push({ text: " ", type: "info" });
+                });
+                break;
+              case "tech":
+                this.terminalHistory.push({
+                  text: "COMPILING SYSTEM ARSENAL...",
+                  type: "info",
+                });
+                this.techStack.forEach((tech) => {
+                  if (tech.trim()) {
+                    this.terminalHistory.push({
+                      text: `  ${tech}`,
+                      type: "info",
+                    });
+                  }
+                });
+                break;
+              case "sysinfo":
+                const userAgent = navigator.userAgent;
+                const browser = userAgent.includes("Chrome")
+                  ? "Chrome"
+                  : userAgent.includes("Firefox")
+                    ? "Firefox"
+                    : userAgent.includes("Safari")
+                      ? "Safari"
+                      : "Standard Web Browser";
+                const uptime = Math.floor(performance.now() / 1000);
+                const hrs = Math.floor(uptime / 3600);
+                const mins = Math.floor((uptime % 3600) / 60);
+                const secs = uptime % 60;
+
+                this.terminalHistory.push({
+                  text: "SYSINFO UTILITY OUTPUT:",
+                  type: "success",
+                });
+                this.terminalHistory.push({
+                  text: `  OS: ALmax OS Core v1.0.4`,
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: `  Host Architecture: x86_64 Core-Neural-Bridge`,
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: `  Uptime: ${hrs}h ${mins}m ${secs}s`,
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: `  Client Shell Engine: AlpineJS / Chrome V8`,
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: `  Browser Engine: ${browser}`,
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: `  Secure Tunnel Hash: SHA-512-RSA-${Math.random().toString(36).substring(7).toUpperCase()}`,
+                  type: "info",
+                });
+                break;
+              case "contact":
+                this.terminalHistory.push({
+                  text: "ESTABLISHING SECURE COM-LINK...",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: `  Email: abituho7s@mozmail.com`,
+                  type: "success",
+                });
+                this.terminalHistory.push({
+                  text: `  Solana: 5vdgrFjmD8WnFT8opGuWwMpLzvNLj1EiqEV1iLDjXdFN`,
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: `  Ethereum: 0x982b821e56cf1a6a18a5da13415c868b3f96d773`,
+                  type: "info",
+                });
+                break;
+              case "matrix":
+                this.terminalHistory.push({
+                  text: "ALTERING MATRIX DENSITY GRAPHICS...",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "[OK] Matrix rain speed and character density recalibrated.",
+                  type: "success",
+                });
+                break;
+              case "sandbox":
+              case "js":
+                this.replMode = true;
+                this.terminalHistory.push({
+                  text: "==================================================",
+                  type: "success",
+                });
+                this.terminalHistory.push({
+                  text: "       JAVASCRIPT NEURAL SANDBOX MODE INITIALIZED  ",
+                  type: "success",
+                });
+                this.terminalHistory.push({
+                  text: "==================================================",
+                  type: "success",
+                });
+                this.terminalHistory.push({
+                  text: "Type any valid JavaScript expression to evaluate it.",
+                  type: "info",
+                });
+                this.terminalHistory.push({
+                  text: "Try running: help() to view available core-x functions.",
+                  type: "success",
+                });
+                this.terminalHistory.push({
+                  text: "Type 'exit' to return to regular shell.",
+                  type: "info",
+                });
+                break;
+              case "sudo":
+                if (args[1] === "rm" && args[2] === "-rf" && args[3] === "/") {
+                  this.terminalHistory.push({
+                    text: "[sudo] password for almax: ************",
+                    type: "info",
+                  });
+                  this.terminalHistory.push({
+                    text: "WARNING: CORE FILES DESTROY COMMAND REJECTED.",
+                    type: "error",
+                  });
+                  this.terminalHistory.push({
+                    text: "ALmax neural safeguards successfully blocked wipe protocol.",
+                    type: "success",
+                  });
+                } else if (args[1] === "hack") {
+                  this.terminalHistory.push({
+                    text: "INITIATING BYPASS SEQUENCE...",
+                    type: "info",
+                  });
+                  this.terminalHistory.push({
+                    text: "  Accessing local database... BYPASSED",
+                    type: "success",
+                  });
+                  this.terminalHistory.push({
+                    text: "  Acquiring root credentials... BYPASSED",
+                    type: "success",
+                  });
+                  this.terminalHistory.push({
+                    text: "  ALmax OS Mainframe Control: COMPROMISED.",
+                    type: "error",
+                  });
+                  this.terminalHistory.push({
+                    text: "Nice attempt! Access privileges escalated to GOD_MODE (Simulated).",
+                    type: "success",
+                  });
+                } else {
+                  this.terminalHistory.push({
+                    text: "[sudo] password for almax: ",
+                    type: "info",
+                  });
+                  this.terminalHistory.push({
+                    text: "Permission denied. System administrator has been notified.",
+                    type: "error",
+                  });
+                }
+                break;
+              default:
+                this.terminalHistory.push({
+                  text: `Error: command not found: '${cmd}'. Type 'help' for options.`,
+                  type: "error",
+                });
+            }
+
+            this.terminalInput = "";
+
+            this.$nextTick(() => {
+              const container = this.$refs.terminalOutput;
+              if (container) {
+                container.scrollTop = container.scrollHeight;
+              }
+            });
+          },
+
+          evaluateJS(code) {
+            const self = this;
+            const sandboxEnv = {
+              help: () =>
+                "Available functions:\n  matrixSpeed(n) - set speed of background matrix rain (e.g. matrixSpeed(5))\n  matrixColor(c) - set matrix color (e.g. matrixColor('pink'), matrixColor('cyan'), matrixColor('green'), matrixColor('orange'))\n  glitch()        - trigger a temporary visual glitch on the page\n  theme(name)    - switch theme ('matrix', 'cyberpunk', 'synthwave')\n  clear()        - clear console history\n  exit()         - exit sandbox",
+              matrixSpeed: (val) => {
+                self.matrixSpeedFactor = Number(val) || 1;
+                return `Matrix speed factor set to ${val}`;
+              },
+              matrixColor: (color) => {
+                const hex =
+                  color === "cyan"
+                    ? "#00ffff"
+                    : color === "pink"
+                      ? "#ff006e"
+                      : color === "orange"
+                        ? "#ffb703"
+                        : "#00ff41";
+                self.matrixColorHex = hex;
+                return `Matrix color set to ${color} (${hex})`;
+              },
+              glitch: () => {
+                self.triggerGlitchEffect();
+                return "Visual glitch protocol initiated...";
+              },
+              theme: (name) => {
+                self.setTheme(name);
+                return `Theme switched to: ${name}`;
+              },
+              clear: () => {
+                self.terminalHistory = [];
+                return "";
+              },
+              exit: () => {
+                self.replMode = false;
+                return "Exiting JavaScript Neural Sandbox.";
+              },
+            };
+
+            try {
+              const keys = Object.keys(sandboxEnv);
+              const vals = Object.values(sandboxEnv);
+              const fn = new Function(...keys, `return (${code})`);
+              const result = fn(...vals);
+              if (result === undefined) return "undefined";
+              if (typeof result === "object")
+                return JSON.stringify(result, null, 2);
+              return String(result);
+            } catch (err) {
+              return `Error: ${err.message}`;
+            }
+          },
+
+          triggerGlitchEffect() {
+            this.isGlitched = true;
+            setTimeout(() => {
+              this.isGlitched = false;
+            }, 1000);
+          },
+
+          setTheme(name) {
+            const root = document.documentElement;
+            if (name === "cyberpunk") {
+              root.style.setProperty("--neon-green", "#ff006e");
+              root.style.setProperty("--neon-cyan", "#00ffff");
+              this.matrixColorHex = "#ff006e";
+            } else if (name === "synthwave") {
+              root.style.setProperty("--neon-green", "#ffb703");
+              root.style.setProperty("--neon-cyan", "#fb8500");
+              this.matrixColorHex = "#ffb703";
+            } else {
+              // default matrix (classic green)
+              root.style.setProperty("--neon-green", "#00ff41");
+              root.style.setProperty("--neon-cyan", "#00ffff");
+              this.matrixColorHex = "#00ff41";
+            }
           },
         };
       }
